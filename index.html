@@ -1560,7 +1560,36 @@
             background: var(--ca-green);
         }
 
-        /* RESPONSIVE */
+        /* HAMBURGER MENU BUTTON */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--ca-text-primary);
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle:hover {
+            background: var(--ca-light-bg);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* RESPONSIVE — 1400px */
         @media (max-width: 1400px) {
             .kpi-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1575,12 +1604,258 @@
                 width: 100%;
             }
         }
+
+        /* RESPONSIVE — 1024px (Tablet) */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 100;
+                transform: translateX(-100%);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .main {
+                width: 100%;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .top-bar {
+                padding: 12px 16px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .chat-panel {
+                width: 340px;
+            }
+        }
+
+        /* RESPONSIVE — 768px (Small tablet / large phone) */
+        @media (max-width: 768px) {
+            body {
+                overflow: auto;
+            }
+
+            .container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .main {
+                overflow: visible;
+            }
+
+            .content {
+                padding: 16px;
+                overflow: visible;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .kpi-card {
+                padding: 16px;
+            }
+
+            .kpi-value {
+                font-size: 24px;
+            }
+
+            .welcome-banner {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .welcome-banner h1 {
+                font-size: 18px;
+            }
+
+            .trends-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            select {
+                width: 100%;
+            }
+
+            .search-bar {
+                max-width: none;
+            }
+
+            .top-bar-actions .datetime {
+                display: none;
+            }
+
+            .alert-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .alert-meta {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .alert-actions {
+                flex-wrap: wrap;
+            }
+
+            .config-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .slider {
+                width: 100%;
+            }
+
+            .source-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stacked-bar-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+            }
+
+            .stacked-bar-label {
+                min-width: auto;
+            }
+
+            .chat-panel {
+                width: calc(100vw - 32px);
+                margin-right: 16px;
+                height: 420px;
+            }
+
+            .deliverable-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        /* RESPONSIVE — 480px (Phone) */
+        @media (max-width: 480px) {
+            .kpi-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .kpi-card {
+                padding: 14px;
+            }
+
+            .kpi-value {
+                font-size: 22px;
+            }
+
+            .welcome-banner h1 {
+                font-size: 16px;
+            }
+
+            .content {
+                padding: 12px;
+            }
+
+            .top-bar {
+                padding: 10px 12px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .search-bar {
+                order: 3;
+                flex-basis: 100%;
+            }
+
+            .source-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .trend-metrics {
+                flex-wrap: wrap;
+            }
+
+            .chat-panel {
+                width: calc(100vw - 16px);
+                margin-right: 8px;
+                margin-bottom: 70px;
+                height: 380px;
+            }
+
+            .chat-button {
+                bottom: 16px;
+                right: 16px;
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+
+            .article-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .trend-card-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="container">
         <!-- SIDEBAR -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="sidebar-logo">
                 <div class="logo-circle">CA</div>
                 <div class="logo-text">
@@ -1637,6 +1912,7 @@
         <div class="main">
             <!-- TOP BAR -->
             <div class="top-bar">
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
                 <div class="search-bar">
                     <span>🤖</span>
                     <input type="text" placeholder="Rechercher articles, tendances, alertes...">
@@ -2743,6 +3019,34 @@
     </div>
 
     <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            sidebarOverlay.classList.add('active');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+        });
+
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        // Close sidebar on nav click (mobile)
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) closeSidebar();
+            });
+        });
+
         // Update datetime
         function updateDateTime() {
             const now = new Date();
